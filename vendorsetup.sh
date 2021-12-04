@@ -15,12 +15,12 @@ if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
 fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
-    export TW_DEFAULT_LANGUAGE="en"
+        export TW_DEFAULT_LANGUAGE="en"
 	export LC_ALL="C"
         export OF_AB_DEVICE=1
 	export ALLOW_MISSING_DEPENDENCIES=true
 	export OF_QUICK_BACKUP_LIST="/boot;/data;"
-	export OF_USE_MAGISKBOOT=1
+	export OF_USE_NEW_MAGISKBOOT=1
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 	export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
@@ -48,12 +48,18 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_CLOCK_POS=2
 	export OF_STATUS_INDENT_LEFT=48
 	export OF_STATUS_INDENT_RIGHT=48
+
+        # Bootimage Partition path
+        export FOX_RECOVERY_BOOT_PARTITION="/dev/block/by-name/boot"
 	
 	# Magisk
-        export FOX_USE_SPECIFIC_MAGISK_ZIP="$(DEVICE_PATH)/magisk/Magisk-v23.0.zip
+        export FOX_USE_SPECIFIC_MAGISK_ZIP="$DEVICE_PATH/magisk/Magisk-v23.0.zip
 
-    # flashlight
-    export OF_FLASHLIGHT_ENABLE=1
+        # flashlight
+        export OF_FLASHLIGHT_ENABLE=1
+
+        # Android 12 Encryption *temporary use until binary.xml file will implement* #
+        export OF_SKIP_DECRYPTED_ADOPTED_STORAGE=1
     
 	# R11
 	export FOX_R11=2
