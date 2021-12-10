@@ -16,6 +16,7 @@ fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export TW_DEFAULT_LANGUAGE="en"
+        export OF_DEVICE_ALT="ares, aresin"
 	export LC_ALL="C"
         export OF_AB_DEVICE=1
 	export ALLOW_MISSING_DEPENDENCIES=true
@@ -49,11 +50,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_STATUS_INDENT_LEFT=48
 	export OF_STATUS_INDENT_RIGHT=48
 
-        # Bootimage Partition path
+        # Partition
         export FOX_RECOVERY_BOOT_PARTITION="/dev/block/by-name/boot"
-	
-	# Magisk
-        export FOX_USE_SPECIFIC_MAGISK_ZIP="$DEVICE_PATH/magisk/Magisk-v23.0.zip
+        export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+        export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 
         # flashlight
         export OF_FLASHLIGHT_ENABLE=1
@@ -63,10 +63,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     
 	# R11
 	export FOX_R11=2
-	export FOX_VERSION="R11"
+	export FOX_VERSION="R11.1"
 	export FOX_VARIANT=MIUI
 	export OF_PATCH_AVB20=1
-	export OF_MAINTAINER="donsenpai05"
+	export OF_MAINTAINER="F O X R E D D"
 	export FOX_ADVANCED_SECURITY=1
 	export OF_USE_TWRP_SAR_DETECT=1
 
